@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    tools{
+        jdk 'Java'
+        maven 'Maven'
+    }
+    stages{
+        stage('Git Checkout'){
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/Vamsi0069/helloworld.git'
+            }
+        }
+        stage('Maven build'){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
+    }
+}
